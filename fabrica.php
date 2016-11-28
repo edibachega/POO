@@ -16,5 +16,7 @@
     
     var_dump($veiculo1);
     
+    echo "Potência do motor: ".Motor::POTENCIA;
+    
     
     

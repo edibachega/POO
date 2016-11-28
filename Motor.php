@@ -5,7 +5,8 @@
      */
     class Motor 
     {
-        private $potencia = 1.0;
+        const POTENCIA = 1.0;
+        
         private $tipoCombustivel = "flex";
         private $aceleracao = 0;
         
@@ -17,7 +18,7 @@
         public function acelerar($valor = 0)
         {
             $this->aceleracao = $valor;
-            $potencia = $valor * $this->potencia;
+            $potencia = $valor * self::POTENCIA;
             return $potencia;
         }
         
