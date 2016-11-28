@@ -21,5 +21,5 @@
             return $potencia;
         }
         
-        
+        //teste de git
     }
