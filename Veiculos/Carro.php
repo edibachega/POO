@@ -1,5 +1,9 @@
 <?php
-
+    
+    namespace POO\Veiculos;
+    
+    use POO\Motor\Motor;
+    
     class Carro
     {
         const MODELO = "A3";
@@ -66,6 +70,29 @@
         public function abastecer($valor)
         {
             $this->tanqueCombustivel += $valor;
+        }
+        
+        public function __call($name, $arguments) 
+        {
+            echo "vc tentou não adquiriu o opcional: ".$name."\n";
+        }
+        /**
+         * Sobrecarga - overloading de atributo
+         * @param type $name
+         */
+        public function __get($name) 
+        {
+            echo "você tentou ler o atributo: $name \n\n";
+        }
+        /**
+         * Sobrecarga - overloading de atributo
+         * @param type $name
+         * @param type $value
+         */
+        public function __set($name, $value) 
+        {
+            $this->$name = $value;
+            echo "você tentou esrever no atributo $name o valor $value \n\n";
         }
 
     }

@@ -1,14 +1,17 @@
 <?php
+    
+    namespace POO\Motor;
+    
     /**
      * Classe Genérica do Motor
      * @author Edinaldo
      */
-    class Motor 
+    abstract class Motor 
     {
         const POTENCIA = 1.0;
         
         private $tipoCombustivel = "flex";
-        private $aceleracao = 0;
+        protected $aceleracao = 0;
         
         /**
          * Acelera o Moror
