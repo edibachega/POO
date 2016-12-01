@@ -2,28 +2,15 @@
 
 function ola($nome)
 {
-    echo "olá $nome";
+    echo "Olá $nome";
 }
-
-//ola("edinaldo");
 
 $idade = 20;
 
 $ola = function($nome) use (&$idade)
 {
-    echo " que legal $nome ";
+    echo "Que legal $nome";
     $idade = 35;
 };
 
-$ola(" Edinaldo ");
-echo $idade;
-
-
-function teste(Closure $param)
-{
-    $param('Edinaldo');
-}
-
-teste(function(){
-    
-});
+var_dump($ola);

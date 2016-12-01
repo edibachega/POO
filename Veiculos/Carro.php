@@ -1,99 +1,118 @@
 <?php
-    
-    namespace POO\Veiculos;
-    
-    use POO\Motor\Motor;
-    
-    class Carro
-    {
-        const MODELO = "A3";
-        const MARCA = "AUDI";
 
-        public $cor;
+namespace POO\Veiculos;
+
+use POO\Motor\Motor;
+use \POO\Motor\InterfaceMotor;
+
+class Carro
+{
+
+	const MODELO = "A3"; 
+	const MARCA = "AUDI";
+		
+	public $cor;
         /**
-         * @var Motor
+         * @var Motor 
          */
-        private $motor;
-        private $porta = 4;
-        private $tanqueCombustivel = 0;
-
+	private $motor;
+	private $porta = 4;
+	private $tanqueCombustivel = 0;
+	
         /**
          * 
          * @param Motor $motor
          * @param string $cor
          */
-        public function __construct(Motor $motor, $cor = "Branco")
-        {			
-            $this->tanqueCombustivel = 10;
-            $this->cor = $cor;	
+	public function __construct(InterfaceMotor $motor, $cor = "Branco")
+	{
+	    $this->tanqueCombustivel = 10;
+	    $this->cor = $cor;
             $this->motor = $motor;
-        }
-        
+	}
+	
         /**
-         * Liga o motor
+         * Liga ou desliga o Motor
          */
-        public function ligar()
-        {
-
-        }
-        
-        /**
-         * Desliga o motor
-         */
-        public function desligar()
-        {
-
-        }
+	public function ligaDesliga()
+	{
+            if ($this->motor->estaLigado())
+            {
+                $this->motor->desliga();
+            } else {
+                $this->motor->ligar();
+            }
+	}
+	
+	
         /**
          * Faz o carro andar
-         * @param int $torque
+         * @param type $torque
          */
-        private function andar($torque)
-        {
-            echo "andou " .$torque. " Metros\n";
-        }
+	private function andar($torque)
+	{
+            echo "Andou ".$torque." Metros\n";
+	}
         
         /**
-         * Envia aceleração ao motor
-         * @param int $valor valor da aceleração informada
+         * Envia acelaração ao motor
+         * @param int $valor Valor da aceleração informada
          */
         public function acelerar($valor)
         {
-            $torque = $this->motor->acelerar($valor);
-            $this->andar($torque);
+            try {
+                echo "Ante de acelerar\n";
+                $torque = $this->motor->acelerar($valor);
+                $this->andar($torque);
+                echo "Depois de acelerar\n";
+                
+            } catch (\Exception $e) {
+                echo $e->getMessage();
+            } finally {
+                echo "Finally\n";
+            } 
+            echo "Fim da função\n";
         }
-        
+
         /**
-         * Abastece o veículo
-         * @param int $valor a ser colocado no tanque
+         * Abastece o veiculo
+         * @param int $valor Valor a ser colocado no tanque
          */
         public function abastecer($valor)
-        {
-            $this->tanqueCombustivel += $valor;
-        }
+	{
+	   $this->tanqueCombustivel += $valor;
+	}
         
+        /**
+         * Sobrecarga - Overloading de metodo
+         * @param type $name
+         * @param type $arguments
+         */
         public function __call($name, $arguments) 
         {
-            echo "vc tentou não adquiriu o opcional: ".$name."\n";
+            echo "Você não adquiriu o opcional: ".$name;
         }
+        
         /**
-         * Sobrecarga - overloading de atributo
+         *  Sobrecarga - Overloading de atributo
          * @param type $name
          */
         public function __get($name) 
         {
-            echo "você tentou ler o atributo: $name \n\n";
+            echo "Você tentou ler o atributo: $name \n\n";
         }
+        
         /**
-         * Sobrecarga - overloading de atributo
+         * Sobrecarga - Overloading de atributo
          * @param type $name
          * @param type $value
          */
         public function __set($name, $value) 
         {
             $this->$name = $value;
-            echo "você tentou esrever no atributo $name o valor $value \n\n";
+            echo "Você tentou escrever no atributo: $name o valor $value \n\n";
         }
+	
+}
 
-    }
 

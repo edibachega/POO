@@ -2,13 +2,19 @@
 
 namespace MWM;
 
-use POO\Motor\Motor;
+use \POO\Motor\InterfaceMotor;
 
 /**
  * Motor MWM
  *
  * @author aluno
  */
-class Motor {
+class Motor implements InterfaceMotor
+{
     
+    public function acelerar($valor = 0) 
+    {
+        return $valor;
+    }
+
 }

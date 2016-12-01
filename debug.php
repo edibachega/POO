@@ -1,12 +1,12 @@
 <?php
 
-$nome = "Edinaldo";
-$idade = 37;
+$nome = "Edir";
+$idade = 12;
 
 function teste($pessoa)
 {
     echo "A idade é $pessoa";
 }
 
-teste($idade);
 
+teste($idade);
