@@ -17,8 +17,8 @@ $mail->setSubject("Cuidado para não atrasar");
 $mail->setBody("bla bla bla bla bla bla bla bla bla");
 
 $server = Swift_SmtpTransport::newInstance('smtp.gmail.com', 465, 'ssl');
-$server->setUsername('ebachega@nordtech.com.br');
-$server->setPassword('Fagote00');
+$server->setUsername('email@email.com.br');
+$server->setPassword('hahaha');
 
 $carteira = Swift_Mailer::newInstance($server);
 
